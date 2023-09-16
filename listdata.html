@@ -60,11 +60,85 @@
                   <tbody id="dataList">
                   </tbody>
                 </table>
+                <div>
+                    <p id="averageAge"></p>
+                    <p id="averageIncome"></p>
+                </div>
               </div>
             </div>
           </div>
         </div>        
     </div>
     
+    <script>     
+        let data = [];
+        let numbers = 1;
+        const clickRegister = document.getElementById("register");
+  
+        clickRegister.onclick = function () {
+  
+            const inputName = document.getElementById("name").value;
+            const inputAge = parseInt(document.getElementById("age").value); // Konversi ke tipe data number
+            const inputIncome = parseInt(document.getElementById("income").value); // Konversi ke tipe data number
+  
+            if (inputName.length < 10 || inputAge < 25 || inputIncome < 100000 || inputIncome > 1000000) {
+  
+                alert("Nama harus memiliki minimal 10 karakter atau Umur < 25 atau Pendapatan < 100000 atau Pendapatan > 1000000");
+  
+            } else {
+  
+                let table = document.getElementById('dataTable');
+                let row = table.insertRow(-1);
+  
+                let cellNo = row.insertCell(0);
+                cellNo.innerHTML = numbers++;
+  
+                let cellNama = row.insertCell(1);
+                cellNama.innerHTML = inputName;
+  
+                let cellUmur = row.insertCell(2);
+                cellUmur.innerHTML = inputAge;
+  
+                let cellPendapatan = row.insertCell(3);
+                cellPendapatan.innerHTML = inputIncome;
+  
+                document.getElementById('name').value = '';
+                document.getElementById('age').value = '';
+                document.getElementById('income').value = '';
+  
+                data.push({
+                    Nama: inputName,
+                    Umur: inputAge,
+                    Pendapatan: inputIncome
+                });
+                console.log(data);
+  
+                let totalAge = 0;
+                let totalIncome = 0;
+  
+                // Loop melalui array objek dan menjumlahkan umur
+                for (let i = 0; i < data.length; i++) {
+                    totalAge += data[i].Umur;
+                    totalIncome += data[i].Pendapatan;
+                }
+  
+                // Hitung rata-rata umur dengan membagi total umur dengan jumlah objek dalam array
+                const averageAge = totalAge / data.length;
+                console.log("Rata-rata Umur:", averageAge);
+                
+                const averageAgeDisplay = document.getElementById("averageAge")
+                averageAgeDisplay.innerHTML = "Nilai Rata - rata umur " + averageAge
+  
+                const averageIncome = totalIncome / data.length;
+                console.log("Rata-rata Pendapatan:", averageIncome);
+  
+                const averageIncomeDisplay = document.getElementById("averageIncome")
+                averageIncomeDisplay.innerHTML = "Nilai Rata - rata umur " + averageIncome
+                
+                
+            }
+        }
+      </script>
+      
 </body>
 </html>

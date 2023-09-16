@@ -1,0 +1,33 @@
+.btnHome {
+    color: gray;
+}
+
+
+.displayBody {
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+.descName {
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+.warningName {
+    background-color: red;
+    color: white;
+}
+.descUmur {
+    padding-right: 102px;
+    padding-left: 102px;
+}
+
+.descPendapatan {
+    padding-right: 80px;
+    padding-left: 80px;
+}
+
+.btnSubmit {
+    background-color: gray;
+    color: white;
+}
